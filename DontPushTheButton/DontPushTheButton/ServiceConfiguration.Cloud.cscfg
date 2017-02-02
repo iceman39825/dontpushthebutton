@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ServiceConfiguration serviceName="DontPushTheButton" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceConfiguration" osFamily="4" osVersion="*" schemaVersion="2015-04.2.6">
+  <Role name="FrontendWebRole">
+    <Instances count="1" />
+    <ConfigurationSettings>
+      <Setting name="Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString" value="DefaultEndpointsProtocol=https;AccountName=dontpushthebutton;AccountKey=$(_dontpushthebutton.key_)" />
+    </ConfigurationSettings>
+  </Role>
+  <Role name="PressProcessingRole">
+    <Instances count="1" />
+    <ConfigurationSettings>
+      <Setting name="Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString" value="DefaultEndpointsProtocol=https;AccountName=dontpushthebutton;AccountKey=$(_dontpushthebutton.key_)" />
+      <Setting name="Microsoft.ServiceBus.ConnectionString" value="Endpoint=sb://[your namespace].servicebus.windows.net;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=[your key]" />
+    </ConfigurationSettings>
+  </Role>
+</ServiceConfiguration>
